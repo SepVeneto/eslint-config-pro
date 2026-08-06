@@ -1066,6 +1066,7 @@
       "next/no-head-element",
       "next/no-html-link-for-pages",
       "next/no-img-element",
+      "next/no-location-assign-relative-destination",
       "next/no-page-custom-font",
       "next/no-styled-jsx-in-document",
       "next/no-sync-scripts",

@@ -330,6 +330,7 @@ export interface RuleOptions {
   'e18e/prefer-array-to-reversed'?: Linter.RuleEntry<[]>;
   'e18e/prefer-array-to-sorted'?: Linter.RuleEntry<[]>;
   'e18e/prefer-array-to-spliced'?: Linter.RuleEntry<[]>;
+  'e18e/prefer-charcode-at-in-loop'?: Linter.RuleEntry<[]>;
   'e18e/prefer-date-now'?: Linter.RuleEntry<[]>;
   'e18e/prefer-exponentiation-operator'?: Linter.RuleEntry<[]>;
   'e18e/prefer-flatmap-over-map-flat'?: Linter.RuleEntry<[]>;
@@ -340,10 +341,12 @@ export interface RuleOptions {
   'e18e/prefer-nullish-coalescing'?: Linter.RuleEntry<[]>;
   'e18e/prefer-object-has-own'?: Linter.RuleEntry<[]>;
   'e18e/prefer-regex-test'?: Linter.RuleEntry<[]>;
+  'e18e/prefer-slice-over-split-index'?: Linter.RuleEntry<[]>;
   'e18e/prefer-spread-syntax'?: Linter.RuleEntry<[]>;
   'e18e/prefer-static-collator'?: Linter.RuleEntry<[]>;
   'e18e/prefer-static-regex'?: Linter.RuleEntry<[]>;
   'e18e/prefer-string-fromcharcode'?: Linter.RuleEntry<[]>;
+  'e18e/prefer-throw-if-no-entry'?: Linter.RuleEntry<[]>;
   'e18e/prefer-timer-args'?: Linter.RuleEntry<[]>;
   'e18e/prefer-url-canparse'?: Linter.RuleEntry<[]>;
   'eol-last'?: Linter.RuleEntry<EolLast>;
@@ -613,6 +616,7 @@ export interface RuleOptions {
   'next/no-head-import-in-document'?: Linter.RuleEntry<[]>;
   'next/no-html-link-for-pages'?: Linter.RuleEntry<NextNoHtmlLinkForPages>;
   'next/no-img-element'?: Linter.RuleEntry<[]>;
+  'next/no-location-assign-relative-destination'?: Linter.RuleEntry<[]>;
   'next/no-page-custom-font'?: Linter.RuleEntry<[]>;
   'next/no-script-component-in-head'?: Linter.RuleEntry<[]>;
   'next/no-styled-jsx-in-document'?: Linter.RuleEntry<[]>;
@@ -857,6 +861,7 @@ export interface RuleOptions {
   'pnpm/json-prefer-workspace-settings'?: Linter.RuleEntry<PnpmJsonPreferWorkspaceSettings>;
   'pnpm/json-valid-catalog'?: Linter.RuleEntry<PnpmJsonValidCatalog>;
   'pnpm/yaml-enforce-settings'?: Linter.RuleEntry<PnpmYamlEnforceSettings>;
+  'pnpm/yaml-no-anonymous-catalog'?: Linter.RuleEntry<[]>;
   'pnpm/yaml-no-duplicate-catalog-item'?: Linter.RuleEntry<PnpmYamlNoDuplicateCatalogItem>;
   'pnpm/yaml-no-unused-catalog-item'?: Linter.RuleEntry<[]>;
   'pnpm/yaml-valid-packages'?: Linter.RuleEntry<[]>;
@@ -1572,6 +1577,7 @@ export interface RuleOptions {
   'unicorn/catch-error-name'?: Linter.RuleEntry<UnicornCatchErrorName>;
   'unicorn/class-reference-in-static-methods'?: Linter.RuleEntry<UnicornClassReferenceInStaticMethods>;
   'unicorn/comment-content'?: Linter.RuleEntry<UnicornCommentContent>;
+  'unicorn/consistent-arrow-return-style'?: Linter.RuleEntry<[]>;
   'unicorn/consistent-assert'?: Linter.RuleEntry<[]>;
   'unicorn/consistent-boolean-name'?: Linter.RuleEntry<UnicornConsistentBooleanName>;
   'unicorn/consistent-class-member-order'?: Linter.RuleEntry<UnicornConsistentClassMemberOrder>;
@@ -1601,6 +1607,7 @@ export interface RuleOptions {
   'unicorn/id-match'?: Linter.RuleEntry<UnicornIdMatch>;
   'unicorn/import-style'?: Linter.RuleEntry<UnicornImportStyle>;
   'unicorn/isolated-functions'?: Linter.RuleEntry<UnicornIsolatedFunctions>;
+  'unicorn/iteration-fallback-style'?: Linter.RuleEntry<UnicornIterationFallbackStyle>;
   'unicorn/logical-assignment-operators'?: Linter.RuleEntry<UnicornLogicalAssignmentOperators>;
   'unicorn/max-nested-calls'?: Linter.RuleEntry<UnicornMaxNestedCalls>;
   'unicorn/name-replacements'?: Linter.RuleEntry<UnicornNameReplacements>;
@@ -1625,6 +1632,7 @@ export interface RuleOptions {
   'unicorn/no-async-promise-finally'?: Linter.RuleEntry<[]>;
   'unicorn/no-await-expression-member'?: Linter.RuleEntry<[]>;
   'unicorn/no-await-in-promise-methods'?: Linter.RuleEntry<[]>;
+  'unicorn/no-barrel-files'?: Linter.RuleEntry<[]>;
   'unicorn/no-blob-to-file'?: Linter.RuleEntry<[]>;
   'unicorn/no-boolean-sort-comparator'?: Linter.RuleEntry<[]>;
   'unicorn/no-break-in-nested-loop'?: Linter.RuleEntry<[]>;
@@ -1726,6 +1734,7 @@ export interface RuleOptions {
   'unicorn/no-unsafe-dom-html'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-promise-all-settled-values'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-property-key'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unsafe-sqlite-interpolation'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-string-replacement'?: Linter.RuleEntry<[]>;
   'unicorn/no-unused-array-method-return'?: Linter.RuleEntry<[]>;
   'unicorn/no-unused-properties'?: Linter.RuleEntry<[]>;
@@ -1804,7 +1813,7 @@ export interface RuleOptions {
   'unicorn/prefer-group-by'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-has-check'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-hoisting-branch-code'?: Linter.RuleEntry<[]>;
-  'unicorn/prefer-https'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-https'?: Linter.RuleEntry<UnicornPreferHttps>;
   'unicorn/prefer-identifier-import-export-specifiers'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-import-meta-properties'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-includes'?: Linter.RuleEntry<[]>;
@@ -1901,6 +1910,7 @@ export interface RuleOptions {
   'unicorn/require-passive-events'?: Linter.RuleEntry<[]>;
   'unicorn/require-post-message-target-origin'?: Linter.RuleEntry<[]>;
   'unicorn/require-proxy-trap-boolean-return'?: Linter.RuleEntry<[]>;
+  'unicorn/single-line-block-comment-style'?: Linter.RuleEntry<UnicornSingleLineBlockCommentStyle>;
   'unicorn/string-content'?: Linter.RuleEntry<UnicornStringContent>;
   'unicorn/switch-case-braces'?: Linter.RuleEntry<UnicornSwitchCaseBraces>;
   'unicorn/switch-case-break-position'?: Linter.RuleEntry<[]>;
@@ -2207,6 +2217,7 @@ export interface RuleOptions {
   'yaml/indent'?: Linter.RuleEntry<YamlIndent>;
   'yaml/key-name-casing'?: Linter.RuleEntry<YamlKeyNameCasing>;
   'yaml/key-spacing'?: Linter.RuleEntry<YamlKeySpacing>;
+  'yaml/no-boolean-key'?: Linter.RuleEntry<[]>;
   'yaml/no-empty-document'?: Linter.RuleEntry<[]>;
   'yaml/no-empty-key'?: Linter.RuleEntry<[]>;
   'yaml/no-empty-mapping-value'?: Linter.RuleEntry<[]>;
