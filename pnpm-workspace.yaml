@@ -1,7 +1,6 @@
 ignoreWorkspaceRootCheck: true
 minimumReleaseAgeExclude:
   - eslint-plugin-yml@3.5.0
-  - svelte@5.56.4
 
 shamefullyHoist: true
 shellEmulator: true
@@ -15,7 +14,6 @@ packages:
 
 catalogs:
   dev:
-    '@angular/core': ^22.1.0
     '@antfu/ni': ^30.3.0
     '@eslint/config-inspector': ^3.2.0
     '@types/eslint-plugin-jsx-a11y': ^6.10.1
@@ -42,30 +40,16 @@ catalogs:
   inline:
     find-up-simple: ^1.0.1
   peer:
-    '@angular-eslint/eslint-plugin': ^22.1.0
-    '@angular-eslint/eslint-plugin-template': ^22.1.0
-    '@angular-eslint/template-parser': ^22.1.0
     '@eslint-community/eslint-utils': ^4.10.1
-    '@eslint-react/eslint-plugin': ^5.18.2
-    '@next/eslint-plugin-next': ^16.3.0
     '@prettier/plugin-xml': ^3.4.2
     '@typescript-eslint/types': ^8.66.0
     '@typescript-eslint/utils': ^8.66.0
-    '@unocss/eslint-plugin': ^66.7.5
-    astro-eslint-parser: ^3.0.0
     eslint: ^10.8.0
-    eslint-plugin-astro: ^3.1.0
     eslint-plugin-erasable-syntax-only: ^0.4.2
     eslint-plugin-format: ^2.0.1
     eslint-plugin-jsx-a11y: ^6.10.2
-    eslint-plugin-react-refresh: ^0.5.3
-    eslint-plugin-solid: ^0.14.5
-    eslint-plugin-svelte: ^3.22.0
     eslint-plugin-vuejs-accessibility: ^2.5.0
-    prettier-plugin-astro: ^0.14.1
     prettier-plugin-slidev: ^1.0.5
-    svelte: ^5.56.8
-    svelte-eslint-parser: ^1.8.0
     vue: ^3.5.40
   prod:
     '@antfu/install-pkg': ^2.0.1

@@ -44,8 +44,6 @@ export const vscodeSettingsString = `
     "xml",
     "gql",
     "graphql",
-    "astro",
-    "svelte",
     "css",
     "less",
     "scss",
@@ -58,22 +56,6 @@ export const frameworkOptions: PromItem<FrameworkOption>[] = [
   {
     label: c.green('Vue'),
     value: 'vue',
-  },
-  {
-    label: c.cyan('React'),
-    value: 'react',
-  },
-  {
-    label: c.red('Svelte'),
-    value: 'svelte',
-  },
-  {
-    label: c.magenta('Astro'),
-    value: 'astro',
-  },
-  {
-    label: c.cyan('Solid'),
-    value: 'solid',
   },
   {
     label: c.blue('Slidev'),
@@ -89,44 +71,16 @@ export const extraOptions: PromItem<ExtraLibrariesOption>[] = [
     label: c.red('Formatter'),
     value: 'formatter',
   },
-  {
-    label: c.cyan('UnoCSS'),
-    value: 'unocss',
-  },
 ]
 
 export const extra: ExtraLibrariesOption[] = extraOptions.map(({ value }) => (value))
 
 export const dependenciesMap = {
-  astro: [
-    'eslint-plugin-astro',
-    'astro-eslint-parser',
-  ],
   formatter: [
     'eslint-plugin-format',
   ],
-  formatterAstro: [
-    'prettier-plugin-astro',
-  ],
-  nextjs: [
-    '@next/eslint-plugin-next',
-  ],
-  react: [
-    '@eslint-react/eslint-plugin',
-    'eslint-plugin-react-refresh',
-  ],
   slidev: [
     'prettier-plugin-slidev',
-  ],
-  solid: [
-    'eslint-plugin-solid',
-  ],
-  svelte: [
-    'eslint-plugin-svelte',
-    'svelte-eslint-parser',
-  ],
-  unocss: [
-    '@unocss/eslint-plugin',
   ],
   vue: [],
 } as const

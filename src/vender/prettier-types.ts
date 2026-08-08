@@ -151,7 +151,7 @@ export type BuiltInParserName
     | 'xml'
     | 'yaml'
 
-export type ExternalParserName = 'slidev' | 'astro'
+export type ExternalParserName = 'slidev'
 
 // This utility is here to handle the case where you have an explicit union
 // between string literals and the generic string type. It would normally

@@ -24,8 +24,6 @@ runWithConfig('js', {
 runWithConfig('all', {
   typescript: true,
   vue: true,
-  svelte: true,
-  astro: true,
 })
 runWithConfig('no-style', {
   typescript: true,
@@ -78,14 +76,13 @@ runWithConfig(
   },
 )
 
-// https://github.com/antfu/eslint-config/issues/618
 runWithConfig(
-  'ts-strict-with-react',
+  'ts-strict-with-vue',
   {
     typescript: {
       tsconfigPath: './tsconfig.json',
     },
-    react: true,
+    vue: true,
   },
   {
     rules: {
@@ -99,7 +96,6 @@ runWithConfig(
   {
     typescript: true,
     vue: true,
-    astro: true,
     formatters: true,
   },
 )

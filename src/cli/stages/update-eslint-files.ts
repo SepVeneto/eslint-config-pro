@@ -48,9 +48,6 @@ export async function updateEslintFiles(result: PromptResult): Promise<void> {
   if (result.extra.includes('formatter'))
     configLines.push(`formatters: true,`)
 
-  if (result.extra.includes('unocss'))
-    configLines.push(`unocss: true,`)
-
   for (const framework of result.frameworks)
     configLines.push(`${framework}: true,`)
 

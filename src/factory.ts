@@ -6,8 +6,6 @@ import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
 import {
-  angular,
-  astro,
   command,
   comments,
   disables,
@@ -18,21 +16,16 @@ import {
   jsonc,
   jsx,
   markdown,
-  nextjs,
   node,
   perfectionist,
   pnpm,
-  react,
-  solid,
   sortPackageJson,
   sortTsconfig,
   stylistic,
-  svelte,
   test,
   toml,
   typescript,
   unicorn,
-  unocss,
   vue,
   yaml,
 } from './configs'
@@ -60,9 +53,6 @@ const VuePackages = [
 ]
 
 export const defaultPluginRenaming = {
-  '@eslint-react': 'react',
-
-  '@next/next': 'next',
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
   'import-lite': 'import',
@@ -87,8 +77,6 @@ export function antfu(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    angular: enableAngular = false,
-    astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
     e18e: enableE18e = true,
@@ -97,18 +85,13 @@ export function antfu(
     imports: enableImports = true,
     jsdoc: enableJsdoc = true,
     jsx: enableJsx = true,
-    nextjs: enableNextjs = false,
     node: enableNode = true,
     perfectionist: enablePerfectionist = true,
     pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
-    react: enableReact = false,
     regexp: enableRegexp = true,
-    solid: enableSolid = false,
-    svelte: enableSvelte = false,
     type: appType = 'app',
     typescript: enableTypeScript = isPackageExists('typescript') || isPackageExists('@typescript/native-preview'),
     unicorn: enableUnicorn = true,
-    unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
 
@@ -151,7 +134,6 @@ export function antfu(
   }
 
   const typescriptOptions = resolveSubOptions(options, 'typescript')
-  const tsconfigPath = 'tsconfigPath' in typescriptOptions ? typescriptOptions.tsconfigPath : undefined
 
   // Base configs
   configs.push(
@@ -265,69 +247,6 @@ export function antfu(
         typescript: !!enableTypeScript,
       }),
     )
-  }
-
-  if (enableReact) {
-    configs.push(
-      react({
-        ...typescriptOptions,
-        ...resolveSubOptions(options, 'react'),
-        overrides: getOverrides(options, 'react'),
-        tsconfigPath,
-      }),
-    )
-  }
-
-  if (enableNextjs) {
-    configs.push(
-      nextjs({
-        overrides: getOverrides(options, 'nextjs'),
-      }),
-    )
-  }
-
-  if (enableSolid) {
-    configs.push(
-      solid({
-        overrides: getOverrides(options, 'solid'),
-        tsconfigPath,
-        typescript: !!enableTypeScript,
-      }),
-    )
-  }
-
-  if (enableSvelte) {
-    configs.push(
-      svelte({
-        overrides: getOverrides(options, 'svelte'),
-        stylistic: stylisticOptions,
-        typescript: !!enableTypeScript,
-      }),
-    )
-  }
-
-  if (enableUnoCSS) {
-    configs.push(
-      unocss({
-        ...resolveSubOptions(options, 'unocss'),
-        overrides: getOverrides(options, 'unocss'),
-      }),
-    )
-  }
-
-  if (enableAstro) {
-    configs.push(
-      astro({
-        overrides: getOverrides(options, 'astro'),
-        stylistic: stylisticOptions,
-      }),
-    )
-  }
-
-  if (enableAngular) {
-    configs.push(angular({
-      overrides: getOverrides(options, 'angular'),
-    }))
   }
 
   if (options.jsonc ?? true) {

@@ -8,7 +8,6 @@ import { antfu } from '../src'
 describe('jsx-a11y rules', () => {
   const createESLint = async (options?: OptionsConfig) => {
     const configs = await antfu({
-      react: true,
       typescript: false,
       stylistic: false,
       formatters: false,
@@ -63,7 +62,6 @@ describe('jsx-a11y rules', () => {
     const code = await readFixture('jsx-a11y-errors/invalid-anchor-href.jsx')
 
     const configs = await antfu({
-      react: true,
       typescript: false,
       stylistic: false,
       formatters: false,

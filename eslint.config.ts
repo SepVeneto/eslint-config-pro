@@ -5,11 +5,6 @@ export default antfu(
     vue: {
       a11y: true,
     },
-    react: true,
-    solid: true,
-    svelte: true,
-    astro: true,
-    nextjs: false,
     typescript: {
       erasableOnly: true,
     },

@@ -31,18 +31,9 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
     result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
         case 'formatter':
-          (<const>[
-            ...dependenciesMap.formatter,
-            ...(result.frameworks.includes('astro') ? dependenciesMap.formatterAstro : []),
-          ]).forEach((f) => {
+          dependenciesMap.formatter.forEach((f) => {
             if (!f)
               return
-            pkg.devDependencies[f] = versionsMap[f as keyof typeof versionsMap]
-            addedPackages.push(f)
-          })
-          break
-        case 'unocss':
-          dependenciesMap.unocss.forEach((f) => {
             pkg.devDependencies[f] = versionsMap[f as keyof typeof versionsMap]
             addedPackages.push(f)
           })

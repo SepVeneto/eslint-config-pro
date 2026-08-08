@@ -152,13 +152,6 @@ export interface OptionsFormatters {
   slidev?: boolean | {
     files?: string[]
   }
-
-  /**
-   * Enable formatting support for Astro.
-   *
-   * Currently only support Prettier.
-   */
-  astro?: 'prettier' | boolean
 }
 
 export interface OptionsComponentExts {
@@ -232,7 +225,7 @@ export interface OptionsTypeScriptParserOptions {
 
   /**
    * Glob patterns for files that should not be type aware.
-   * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+   * @default ['**\/*.md\/**']
    */
   ignoresTypeAware?: string[]
 }
@@ -324,22 +317,6 @@ export interface OptionsPnpm extends OptionsIsInEditor {
    * @default false
    */
   sort?: boolean
-}
-
-export interface OptionsUnoCSS extends OptionsOverrides {
-  /**
-   * Enable attributify support.
-   * @default true
-   */
-  attributify?: boolean
-  /**
-   * Enable strict mode by throwing errors about blocklisted classes.
-   * @default false
-   */
-  strict?: boolean
-}
-
-export interface OptionsReact extends OptionsOverrides {
 }
 
 export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
@@ -475,31 +452,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   toml?: boolean | OptionsOverrides
 
   /**
-   * Enable ASTRO support.
-   *
-   * Requires installing:
-   * - `eslint-plugin-astro`
-   *
-   * Requires installing for formatting .astro:
-   * - `prettier-plugin-astro`
-   *
-   * @default false
-   */
-  astro?: boolean | OptionsOverrides
-
-  /**
-   * Enable Angular support.
-   *
-   * Requires installing:
-   * - `@angular-eslint/eslint-plugin`
-   * - `@angular-eslint/eslint-plugin-template`
-   * - `@angular-eslint/template-parser`
-   *
-   * @default false
-   */
-  angular?: boolean | OptionsOverrides
-
-  /**
    * Enable linting for **code snippets** in Markdown and the markdown content itself.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
@@ -523,57 +475,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default true
    */
   regexp?: boolean | (OptionsRegExp & OptionsOverrides)
-
-  /**
-   * Enable react rules.
-   *
-   * Requires installing:
-   * - `@eslint-react/eslint-plugin`
-   * - `eslint-plugin-react-refresh`
-   *
-   * @default false
-   */
-  react?: boolean | OptionsReact
-
-  /**
-   * Enable nextjs rules.
-   *
-   * Requires installing:
-   * - `@next/eslint-plugin-next`
-   *
-   * @default false
-   */
-  nextjs?: boolean | OptionsOverrides
-
-  /**
-   * Enable solid rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-solid`
-   *
-   * @default false
-   */
-  solid?: boolean | OptionsOverrides
-
-  /**
-   * Enable svelte rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-svelte`
-   *
-   * @default false
-   */
-  svelte?: boolean | OptionsOverrides
-
-  /**
-   * Enable unocss rules.
-   *
-   * Requires installing:
-   * - `@unocss/eslint-plugin`
-   *
-   * @default false
-   */
-  unocss?: boolean | OptionsUnoCSS
 
   /**
    * Enable pnpm (workspace/catalogs) support.
@@ -627,7 +528,5 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
     markdown?: TypedFlatConfigItem['rules']
     yaml?: TypedFlatConfigItem['rules']
     toml?: TypedFlatConfigItem['rules']
-    react?: TypedFlatConfigItem['rules']
-    svelte?: TypedFlatConfigItem['rules']
   }
 }

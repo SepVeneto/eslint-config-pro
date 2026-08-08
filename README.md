@@ -7,7 +7,7 @@
 - Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, etc. Out-of-box.
 - Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Optional [React](#react), [Next.js](#nextjs), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro), [Solid](#solid) support
+- Optional [Vue accessibility](#vue-accessibility) support
 - Optional [formatters](#formatters) support for formatting CSS, HTML, XML, etc.
 - **Style principle**: Minimal for reading, stable for diff, consistent
   - Sorted imports, dangling commas
@@ -154,8 +154,6 @@ Add the following settings to your `.vscode/settings.json`:
     "xml",
     "gql",
     "graphql",
-    "astro",
-    "svelte",
     "css",
     "less",
     "scss",
@@ -276,8 +274,6 @@ lspconfig.eslint.setup(
       "xml",
       "gql",
       "graphql",
-      "astro",
-      "svelte",
       "css",
       "less",
       "scss",
@@ -451,16 +447,15 @@ Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/con
 
 Since flat config requires us to explicitly provide the plugin names (instead of the mandatory convention from npm package name), we renamed some plugins to make the overall scope more consistent and easier to write.
 
-| New Prefix | Original Prefix        | Source Plugin                                                                                         |
-| ---------- | ---------------------- | ----------------------------------------------------------------------------------------------------- |
-| `import/*` | `import-lite/*`        | [eslint-plugin-import-lite](https://github.com/9romise/eslint-plugin-import-lite)                     |
-| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                                |
-| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                                   |
-| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint)            |
-| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)                      |
-| `test/*`   | `vitest/*`             | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest)                           |
-| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)             |
-| `next/*`   | `@next/next`           | [@next/eslint-plugin-next](https://github.com/vercel/next.js/tree/canary/packages/eslint-plugin-next) |
+| New Prefix | Original Prefix        | Source Plugin                                                                              |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
+| `import/*` | `import-lite/*`        | [eslint-plugin-import-lite](https://github.com/9romise/eslint-plugin-import-lite)          |
+| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
+| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
+| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
+| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
+| `test/*`   | `vitest/*`             | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest)                |
+| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)  |
 
 When you want to override rules, or disable them inline, you need to update to the new prefix:
 
@@ -679,139 +674,6 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 
 ```bash
 npm i -D eslint-plugin-format
-```
-
-#### React
-
-To enable React support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  react: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @eslint-react/eslint-plugin eslint-plugin-react-refresh
-```
-
-#### Next.js
-
-To enable Next.js support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  nextjs: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @next/eslint-plugin-next
-```
-
-#### Svelte
-
-To enable svelte support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  svelte: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-svelte
-```
-
-#### Astro
-
-To enable astro support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  astro: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-astro
-```
-
-#### Solid
-
-To enable Solid support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  solid: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-solid
-```
-
-#### UnoCSS
-
-To enable UnoCSS support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  unocss: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @unocss/eslint-plugin
-```
-
-#### Angular
-
-To enable Angular support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  angular: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser
 ```
 
 ### Optional Rules

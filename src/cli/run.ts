@@ -20,11 +20,11 @@ export interface CliRunOptions {
    */
   yes?: boolean
   /**
-   * Use the framework template for optimal customization: vue / react / svelte / astro
+   * Use the framework template for optimal customization: vue / slidev
    */
   frameworks?: string[]
   /**
-   * Use the extra utils: formatter / perfectionist / unocss
+   * Use the extra utils: formatter
    */
   extra?: string[]
 }
