@@ -73,7 +73,6 @@ export async function stylistic(
             }
         ),
 
-        'style/brace-style': ['error', '1tbs'],
         'style/generator-star-spacing': ['error', { after: true, before: false }],
         'style/yield-star-spacing': ['error', { after: true, before: false }],
 
