@@ -6,13 +6,13 @@
   "description": "SepVeneto's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
-  "homepage": "https://github.com/sepveneto/eslint-config-pro",
+  "homepage": "https://github.com/SepVeneto/eslint-config-pro",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sepveneto/eslint-config-pro.git"
+    "url": "git+https://github.com/SepVeneto/eslint-config-pro.git"
   },
   "bugs": {
-    "url": "https://github.com/sepveneto/eslint-config-pro/issues"
+    "url": "https://github.com/SepVeneto/eslint-config-pro/issues"
   },
   "keywords": [
     "eslint-config"
