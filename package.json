@@ -1,7 +1,7 @@
 {
   "name": "@sepveneto/eslint-config",
   "type": "module",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "packageManager": "pnpm@11.20.0",
   "description": "Anthony's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
