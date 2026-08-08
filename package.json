@@ -111,10 +111,10 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "catalog:dev",
     "@eslint/config-inspector": "catalog:dev",
     "@prettier/plugin-xml": "catalog:peer",
+    "@sepveneto/eslint-config": "workspace:*",
     "@types/eslint-plugin-jsx-a11y": "catalog:dev",
     "@types/node": "catalog:dev",
     "baseline-browser-mapping": "catalog:dev",

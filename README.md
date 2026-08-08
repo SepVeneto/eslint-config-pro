@@ -1,6 +1,6 @@
-# @antfu/eslint-config
+# @sepveneto/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@sepveneto/eslint-config?color=444&label=)](https://npmjs.com/package/@sepveneto/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Reasonable defaults, best practices, only one line of config
@@ -33,7 +33,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-pnpm dlx @antfu/eslint-config@latest
+pnpm dlx @sepveneto/eslint-config@latest
 ```
 
 ### Manual Install
@@ -41,14 +41,14 @@ pnpm dlx @antfu/eslint-config@latest
 If you prefer to set up manually:
 
 ```bash
-pnpm i -D eslint @antfu/eslint-config
+pnpm i -D eslint @sepveneto/eslint-config
 ```
 
 And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu()
 ```
@@ -61,9 +61,9 @@ Combined with legacy config:
 If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
 
 ```js
-// eslint.config.mjs
-import antfu from '@antfu/eslint-config'
 import { FlatCompat } from '@eslint/eslintrc'
+// eslint.config.mjs
+import antfu from '@sepveneto/eslint-config'
 
 const compat = new FlatCompat()
 
@@ -320,7 +320,7 @@ Normally you only need to import the `antfu` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu()
 ```
@@ -329,7 +329,7 @@ And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   // Type of the project. 'lib' for libraries, the default is 'app'
@@ -371,7 +371,7 @@ The `antfu` factory function also accepts any number of arbitrary custom config 
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu(
   {
@@ -417,7 +417,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@antfu/eslint-config'
+} from '@sepveneto/eslint-config'
 
 export default combine(
   ignores(),
@@ -482,7 +482,7 @@ Since v2.9.0, this preset will automatically rename the plugins also for your cu
 If you really want to use the original prefix, you can revert the plugin renaming by:
 
 ```ts
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu()
   .renamePlugins({
@@ -501,7 +501,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu(
   {
@@ -531,7 +531,7 @@ We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   vue: {
@@ -562,7 +562,7 @@ Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` ob
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu()
   .prepend(
@@ -591,7 +591,7 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   vue: true
@@ -604,7 +604,7 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   vue: {
@@ -621,7 +621,7 @@ To enable Vue accessibility support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   vue: {
@@ -646,7 +646,7 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   formatters: {
@@ -720,7 +720,7 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   typescript: {
@@ -734,7 +734,7 @@ export default antfu({
 If you're using prettier outside eslint, you can disable the config via etc:
 
 ```js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 import prettierConflicts from 'eslint-config-prettier'
 
 export default antfu({
@@ -761,7 +761,7 @@ This is to prevent unused imports from getting removed by the editor during refa
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from '@sepveneto/eslint-config'
 
 export default antfu({
   isInEditor: false
@@ -858,9 +858,9 @@ I am a very opinionated person, so as this config. I prefer the top-level functi
 I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
 
 ```ts
-import antfu from '@antfu/eslint-config'
+import eslint from '@sepveneto/eslint-config'
 
-export default antfu({
+export default eslint({
   lessOpinionated: true
 })
 ```

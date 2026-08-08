@@ -3,6 +3,8 @@ import { it } from 'vitest'
 import { CONFIG_PRESET_FULL_OFF, CONFIG_PRESET_FULL_ON } from '../src/config-presets'
 import { antfu } from '../src/factory'
 
+process.env.CI = '1'
+
 interface Suite {
   name: string
   configs: OptionsConfig

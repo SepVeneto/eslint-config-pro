@@ -1,3 +1,13 @@
+<template>
+  <div>
+    <h1>{{ greeting }}</h1>
+    <button @click="incrementCounter">
+      Click me!
+    </button>
+    <p>Counter: {{ counter }}</p>
+  </div>
+</template>
+
 <script setup lang="ts">
 // Define reactive data and props
 import { ref } from 'vue'
@@ -10,16 +20,6 @@ function incrementCounter() {
   counter.value++
 }
 </script>
-
-<template>
-  <div>
-    <h1>{{ greeting }}</h1>
-    <button @click="incrementCounter">
-      Click me!
-    </button>
-    <p>Counter: {{ counter }}</p>
-  </div>
-</template>
 
 <style>
 .a {

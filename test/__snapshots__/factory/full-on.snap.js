@@ -878,7 +878,6 @@
       "vue/prefer-template",
       "vue/space-infix-ops",
       "vue/space-unary-ops",
-      "style/brace-style",
       "vue/array-bracket-spacing",
       "vue/arrow-spacing",
       "vue/block-spacing",
