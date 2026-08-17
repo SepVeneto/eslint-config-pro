@@ -2,6 +2,7 @@ import type { Linter } from 'eslint'
 import type { RuleOptions } from './typegen'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 
+import { createRequire } from 'node:module'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
@@ -52,6 +53,34 @@ const VuePackages = [
   '@slidev/cli',
 ]
 
+const nodeRequire = createRequire(import.meta.url)
+
+/**
+ * Whether the TypeScript toolchain (`@typescript-eslint/*`) can be loaded in
+ * the current environment.
+ *
+ * Besides checking the project's own dependencies (from cwd), we also try to
+ * resolve `typescript` from this package's location. In strict pnpm/yarn
+ * layouts the `typescript` peer is only installed inside the virtual store, so
+ * `isPackageExists()` from the project root returns false even though the
+ * parser and plugin can load it. This matters for Deno projects, which are
+ * TypeScript-based but usually don't depend on the `typescript` package at
+ * all; without this fallback their `.ts`/`.tsx` files get globally ignored and
+ * explicit linting reports "File ignored because of a matching ignore pattern".
+ */
+function isTypeScriptAvailable(): boolean {
+  if (isPackageExists('typescript') || isPackageExists('@typescript/native-preview'))
+    return true
+
+  try {
+    nodeRequire.resolve('typescript')
+    return true
+  }
+  catch {
+    return false
+  }
+}
+
 export const defaultPluginRenaming = {
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
@@ -90,7 +119,7 @@ export function antfu(
     pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
     regexp: enableRegexp = true,
     type: appType = 'app',
-    typescript: enableTypeScript = isPackageExists('typescript') || isPackageExists('@typescript/native-preview'),
+    typescript: enableTypeScript = isTypeScriptAvailable(),
     unicorn: enableUnicorn = true,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
